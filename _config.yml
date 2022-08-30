@@ -16,7 +16,7 @@ lang: en
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone:
+timezone: Europe/Bucharest
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
@@ -133,7 +133,12 @@ kramdown:
       line_numbers: true
       start_line: 1
 
+collections_dir: content
 collections:
+  concepts:
+    output: true
+    permalink: /:collection/:path
+    sort_by: order
   tabs:
     output: true
     sort_by: order
