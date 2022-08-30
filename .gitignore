@@ -7,6 +7,7 @@
 !.husky
 !.commitlintrc.json
 !.versionrc.json
+!.placeholder
 
 # bundler cache
 _site
