@@ -35,7 +35,7 @@ layout: page
         {% if concept_page.description %}
             {{ concept_page.description | truncate: truncate_value }}
         {% else %}
-            {{ concept_page.excerpt | remove_first: "<p>" | remove_first: "</p>" | truncate: truncate_value }}
+            {{ concept_page.excerpt | strip_html | truncate: truncate_value }}
         {% endif %}
       </span>
     </li>
