@@ -1,0 +1,44 @@
+---
+layout: page
+# The Concept layout
+# An adaptation based on the `Category` layout
+---
+{% include lang.html %}
+
+{% include concepts-mapper.html %}
+{% assign concept_name = page.url | remove: '/' | remove_first: page.collection | remove_first: page.slug %}
+{% assign concept_entry = all_concepts_map | find_exp: "item", "item[0] == concept_name" %}
+
+<div id="page-category">
+  <h1 class="d-flex align-items-center pl-lg-2">
+    <i class="fas fa-cog fa-fw text-muted mr-3 d-none d-md-block"></i>
+    {{ page.title }}
+    <span class="lead text-muted ml-4">
+      {% assign concept_pages_size = concept_entry[1] | size %}
+      | {{ concept_pages_size }}
+      {% if concept_pages_size == 1 %}
+        {{ site.data.locales[lang].concepts.concept_pages_measure.singular
+          | default: site.data.locales[lang].concepts.concept_pages_measure }}
+      {% else %}
+        {{ site.data.locales[lang].concepts.concept_pages_measure.plural
+          | default: site.data.locales[lang].concepts.concept_pages_measure }}
+      {% endif %}
+    </span>
+  </h1>
+
+  <ul class="post-content pl-0">
+    {% for concept_page in concept_entry[1] %}
+    <li class="d-flex flex-wrap pl-md-3 pr-md-3">
+      <a href="{{ concept_page.url | relative_url }}" class ="text-wrap">{{ concept_page.title }}</a>
+      <span class="ml-3 text-wrap text-muted small">
+        {% assign truncate_value = 80 %}
+        {% if concept_page.description %}
+            {{ concept_page.description | truncate: truncate_value }}
+        {% else %}
+            {{ concept_page.excerpt | remove_first: "<p>" | remove_first: "</p>" | truncate: truncate_value }}
+        {% endif %}
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

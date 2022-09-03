@@ -11,6 +11,8 @@ layout:
 tabs:
   # format: <filename_without_extension>: <value>
   home: Home
+  concepts: Concepts
+  further-reading: Further Reading
   categories: Categories
   tags: Tags
   archives: Archives
@@ -81,3 +83,9 @@ categories:
   post_measure:
     singular: post
     plural: posts
+
+# concepts page
+concepts:
+  concept_pages_measure:
+    singular: page
+    plural: pages

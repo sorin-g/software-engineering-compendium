@@ -160,7 +160,13 @@ defaults:
       type: concepts    # see `site.collections`
     values:
       layout: page
-      permalink: /:collection/:path/
+      permalink: /:collection/:path
+  - scope:
+      path: 'content/_concepts/*/index.html'
+      type: concepts    # see `site.collections`
+    values:
+      layout: concept
+      permalink: /:collection/:path
   - scope:
       path: ''
       type: tabs        # see `site.collections`
