@@ -1,0 +1,46 @@
+{% comment %}
+    Loop through the pages in the Concepts collection and map the pages
+    to the corresponding concept (i.e. the containing subdirectory name).
+
+    Concept `index.*` files are not included in the map.
+
+    The result is stored in the `all_concepts_map` variable.
+{% endcomment %}
+
+{% comment %} reusable empty array definition {% endcomment %}
+{% assign array_empty = "" | split: '' %}
+
+{% comment %} array of key-value pairs, where key: concept name, value: [concept pages] {% endcomment %}
+{% assign all_concepts_map = array_empty %} 
+
+{% for concept_page in site.concepts %}
+    {% comment %} do not include index pages in the concepts map {% endcomment %}
+    {% if concept_page.slug == "index" %} {% continue %} {% endif %}
+
+    {% comment %} construct the concept entry key (concept name) {% endcomment %}
+    {% assign concept_page_dir = concept_page.url | remove: '/' | remove_first: concept_page.collection | remove_first: concept_page.slug %}
+    
+    {% comment %} check if a map entry with the current concept name already exists {% endcomment %}
+    {% assign concept_found = all_concepts_map | find_exp: "item", "item[0] == concept_page_dir" %}
+    {% if concept_found %}
+        {% comment %} append the current page to the concept entry pages array {% endcomment %}
+        {% assign concept_entry_pages = concept_found[1] | push: concept_page %}
+        {% assign concept_entry_updated = concept_found | pop | push: concept_entry_pages %}
+        
+        {% comment %} re-construct the concepts map (with the updated concept entry pages) {% endcomment %}
+        {% assign all_concepts_map_clone = array_empty %}
+        {% for concept_entry in all_concepts_map %}
+            {% if concept_entry[0] == concept_page_dir %}
+                {% assign all_concepts_map_clone = all_concepts_map_clone | push: concept_entry_updated %}
+            {% else %}
+                {% assign all_concepts_map_clone = all_concepts_map_clone | push: concept_entry %}
+            {% endif %}
+        {% endfor %}
+        {% assign all_concepts_map = all_concepts_map_clone %}
+    {% else %}
+        {% comment %} create a new concept entry & include the current page {% endcomment %}
+        {% assign concept_entry_pages = array_empty | push: concept_page %}
+        {% assign new_concept = array_empty | push: concept_page_dir | push: concept_entry_pages %}
+        {% assign all_concepts_map = all_concepts_map | push: new_concept %}
+    {% endif %}
+{% endfor %}

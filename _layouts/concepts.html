@@ -1,0 +1,76 @@
+---
+layout: page
+# All the Concepts and the containing pages
+# An adaptation based on the `Categories` layout
+---
+
+{% include lang.html %}
+{% include concepts-mapper.html %}
+
+{% assign HEAD_PREFIX = "h_" %}
+{% assign LIST_PREFIX = "l_" %}
+
+{% assign group_index = 0 %}
+
+{% for concept_entry in all_concepts_map %}
+
+    {% assign concept_name = concept_entry | first %}
+    {% assign concept_entry_pages = concept_entry | last %}
+    {% assign concept_pages_size = concept_entry_pages | size %}
+
+    <div class="card categories">
+        
+        <!-- concept -->
+        <div id="{{ HEAD_PREFIX }}{{ group_index }}" 
+            class="card-header d-flex justify-content-between hide-border-bottom">
+            
+            <span>
+                <i class="fas fa-cog fa-fw rotate"></i>
+
+                {% assign concept_index_page_url = "/concepts/" | append: concept_name | append: "/index" %}
+                {% assign concept_index_page = site.concepts | find: "url", concept_index_page_url %}
+                <a href="{{ concept_index_page.url | remove: concept_index_page.slug | relative_url }}" class="ml-1 mr-2">
+                    {{ concept_index_page.title }}
+                </a>
+
+                <!-- content count -->
+                <span class="text-muted small font-weight-light">
+                    {{ concept_pages_size }}
+                    {% if concept_pages_size == 1 %}
+                        {{ site.data.locales[lang].concepts.concept_pages_measure.singular
+                            | default: site.data.locales[lang].concepts.concept_pages_measure }}
+                    {% else %}
+                        {{ site.data.locales[lang].concepts.concept_pages_measure.plural
+                            | default: site.data.locales[lang].concepts.concept_pages_measure }}
+                    {% endif %}
+                </span>
+            </span>
+
+            <!-- arrow -->
+            {% if concept_pages_size > 0 %}
+                <a href="#{{ LIST_PREFIX }}{{ group_index }}" data-toggle="collapse"
+                    aria-expanded="false" aria-label="{{ HEAD_PREFIX }}{{ group_index }}-trigger"
+                    class="category-trigger hide-border-bottom">
+                    <i class="fas fa-fw fa-angle-down rotate"></i>
+                </a>
+            {% endif %}
+
+        </div> <!-- .card-header -->
+
+        <!-- Concept pages -->
+        {% if concept_pages_size > 0 %}
+            <div id="{{ LIST_PREFIX }}{{ group_index }}" class="collapse" aria-expanded="false">
+                <ul class="list-group">
+                    {% for concept_page in concept_entry_pages %}
+                        <li class="list-group-item">
+                            <i class="fas fa-minus fa-fw"></i>
+                            <a href="{{ concept_page.url | relative_url }}" class="ml-1 mr-2">{{ concept_page.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div> <!-- .card -->
+
+{% assign group_index = group_index | plus: 1 %}
+{% endfor %}

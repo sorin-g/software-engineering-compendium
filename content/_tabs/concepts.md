@@ -1,5 +1,6 @@
 ---
 title: Concepts
-icon: fas fa-stream
+layout: concepts
+icon: fas fa-cogs
 order: 1
 ---
