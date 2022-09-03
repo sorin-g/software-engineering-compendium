@@ -63,8 +63,7 @@ layout: page
                 <ul class="list-group">
                     {% for concept_page in concept_entry_pages %}
                         <li class="list-group-item">
-                            <i class="fas fa-minus fa-fw"></i>
-                            <a href="{{ concept_page.url | relative_url }}" class="ml-1 mr-2">{{ concept_page.title }}</a>
+                            <a href="{{ concept_page.url | relative_url }}" class="ml-4 mr-2">{{ concept_page.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>
