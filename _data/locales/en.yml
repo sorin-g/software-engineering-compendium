@@ -7,6 +7,13 @@ layout:
   category: Category
   tag: Tag
 
+# The site collections
+collections:
+  concepts: Concepts
+  drafts: Drafts
+  posts: Posts
+  tabs: Tabs
+
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
