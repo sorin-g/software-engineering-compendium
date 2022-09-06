@@ -3,6 +3,9 @@
 # ----- Commons label -----
 
 layout:
+  blog: Blog
+  concept: Concept
+  concepts: Concepts
   post: Post
   category: Category
   tag: Tag
@@ -18,9 +21,10 @@ collections:
 tabs:
   # Other sidebar links
   home: Home
+  blog: Posts
   # Actual tabs. Format: <filename_without_extension>: <value>
   concepts: Concepts
-  further-reading: Further Reading
+  further-reading: Further reading
   categories: Categories
   tags: Tags
   archives: Archives

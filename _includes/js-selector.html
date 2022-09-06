@@ -24,6 +24,7 @@
 {% endif %}
 
 {% if page.layout == 'home'
+    or page.layout == 'blog'
     or page.layout == 'post'
     or page.layout == 'archives'
     or page.layout == 'category'
@@ -51,7 +52,10 @@
     {% assign type = page.layout %}
   <!-- use same js as `categories` layout for `concepts` -->
   {% when 'concepts' %}
-      {% assign type = 'categories' %}
+    {% assign type = 'categories' %}
+  <!-- use same js as `home` layout for `blog` -->
+  {% when 'blog' %}
+    {% assign type = 'home' %}
   {% when 'archives', 'category', 'tag' %}
     {% assign type = "misc" %}
   {% else %}
