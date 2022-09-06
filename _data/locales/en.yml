@@ -7,17 +7,18 @@ layout:
   category: Category
   tag: Tag
 
-# The site collections
+# The site collections. See `/content` directory
 collections:
   concepts: Concepts
   drafts: Drafts
   posts: Posts
   tabs: Tabs
 
-# The tabs of sidebar
+# The display name for the sidebar items
 tabs:
-  # format: <filename_without_extension>: <value>
+  # Other sidebar links
   home: Home
+  # Actual tabs. Format: <filename_without_extension>: <value>
   concepts: Concepts
   further-reading: Further Reading
   categories: Categories
@@ -51,6 +52,7 @@ copyright:
 
 meta: Powered by :PLATFORM with :THEME theme.
 
+# 404 - Page not found
 not_found:
   statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
 
