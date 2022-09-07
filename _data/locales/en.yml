@@ -30,7 +30,11 @@ tabs:
   archives: Archives
   about: About
 
-# the text displayed in the search bar & search results
+# Theme labels
+theme:
+  button_title: Light/Dark mode   # Theme button tooltip
+
+# The text displayed in the search bar & search results
 search:
   hint: search
   cancel: Cancel
@@ -65,7 +69,6 @@ notification:
   update: Update
 
 # ----- Posts related labels -----
-
 post:
   written_by: By
   posted: Posted

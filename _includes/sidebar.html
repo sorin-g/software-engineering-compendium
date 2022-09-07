@@ -62,7 +62,7 @@
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
 
     {% unless site.theme_mode %}
-      <button class="mode-toggle btn" aria-label="Switch Mode">
+      <button class="mode-toggle btn" aria-label="Switch Mode" title="{{ site.data.locales[lang].theme.button_title }}">
         <i class="fas fa-adjust"></i>
       </button>
 
@@ -88,7 +88,7 @@
       {% endcapture %}
 
       {% if url %}
-      <a href="{{ url }}" aria-label="{{ entry.type }}"
+      <a href="{{ url }}" aria-label="{{ entry.type }}" title="{{ entry.title }}"
         {% unless entry.noblank %}target="_blank" rel="noopener"{% endunless %}>
         <i class="{{ entry.icon }}"></i>
       </a>
