@@ -12,7 +12,7 @@
   icon: 'fab fa-github'
 -
   type: rss
-  title: RSS feed
+  title: RSS
   icon: 'fas fa-rss'
   noblank: false
 
