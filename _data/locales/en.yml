@@ -19,10 +19,10 @@ collections:
 
 # The display name for the sidebar items
 tabs:
-  # Other sidebar links
+  # Default sidebar links
   home: Home
   blog: Posts
-  # Actual tabs. Format: <filename_without_extension>: <value>
+  # Actual tabs. Format - <filename_without_extension>: <value>
   concepts: Concepts
   further-reading: Further reading
   categories: Categories
