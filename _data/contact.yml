@@ -1,31 +1,43 @@
 #  The contact options.
-# icons powered by <https://fontawesome.com/>
+# 
+# Format:
+#   type: <contact_type_identifier>
+#   title: <contact_button_tooltip>
+#   icon: <fontawesome_icon_id>   # icons powered by <https://fontawesome.com/>
+#   noblank: true/false           # open link in current tab?
 
 -
   type: github
+  title: GitHub
   icon: 'fab fa-github'
 -
   type: rss
+  title: RSS
   icon: 'fas fa-rss'
-  noblank: false              # open link in current tab
+  noblank: false
 
 # Uncomment and complete the url below to enable more contact options
 # -
 #   type: email
+#   title: E-mail
 #   icon: 'fas fa-envelope'
-#   noblank: true             # open link in current tab
+#   noblank: true
 # -
 #   type: linkedin
+#   title: LinkedIn
 #   icon: 'fab fa-linkedin'   
-#   url:  ''                  # Fill with your Linkedin homepage
+#   url:  ''                  # Linkedin homepage
 # -
 #   type: stack-overflow
+#   title: Stack Overflow
 #   icon: 'fab fa-stack-overflow'
-#   url:  ''                  # Fill with your stackoverflow homepage
+#   url:  ''                  # Stack Overflow homepage
 # -
 #   type: twitter
+#   title: Twitter
 #   icon: 'fab fa-twitter'
 # -
 #   type: mastodon
-#   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
+#   title: Mastodon
+#   icon: 'fab fa-mastodon'
 #   url:  ''

@@ -18,56 +18,51 @@
   
       {% else %}
         {% for item in paths %}
-          {% comment %} first item in breadcrumb {% endcomment %}
-          {% if forloop.first %}
-            <span>
-              <a href="{{ '/' | relative_url }}">
-                {{ site.data.locales[lang].tabs.home | capitalize }}
-              </a>
-            </span>
-          
-          {% comment %} last item in breadcrumb {% endcomment %}
-          {% elsif forloop.last %}
-            {% if page.collection == 'tabs' %}
-              <span>{{ site.data.locales[lang].tabs[item] | default: page.title }}</span>
+          {% comment %} breadcrumb path so far {% endcomment %}
+          {% assign forloop_path = forloop_path | append: item | append: "/" %}
+        
+          {% case forloop.index %}
+            {% comment %} first item in breadcrumb - Home {% endcomment %}
+            {% when 1 %}
+              {% assign breadcrumb_url = forloop_path | relative_url %}
+              {% assign breadcrumb_title = site.data.locales[lang].tabs.home | capitalize %}
+            
+            {% comment %} second item in breadcrumb, expected to be a sidebar page {% endcomment %}
+            {% when 2 %}
+              {% assign breadcrumb_url = forloop_path | remove_first: "/" | relative_url %}
+              {% assign breadcrumb_title = site.data.locales[lang].tabs[item] | capitalize %}
+            
+            {% comment %} other item in breadcrumb {% endcomment %}
+            {% comment %} the breadcrumb (page) title is fetched based on the breadcrumb path so far {% endcomment %}
             {% else %}
-              <span>{{ page.title }}</span>
-            {% endif %}
-  
-          {% comment %} middle breadcrumb (collection paths) {% endcomment %}
-          {% elsif page.collection %}
-            {% if forloop.index == 2 %} {% comment %} `item` == collection name {% endcomment %}
-              <span>
-                <a href="{{ item | relative_url }}">
-                  {{ site.data.locales[lang].collections[item] | default: page.title }}
-                </a>
-              </span>
-            {% else %} {% comment %} `item` == sub-collection name {% endcomment %}
-              {% comment %} construct path so far (in the parent for-loop) {% endcomment %}
-              {% for path_segment in paths limit: forloop.index %}
-                {% assign path_item_url = path_item_url | append: path_segment | append: "/" %}
-              {% endfor %}
-              {% comment %} find sub-collection index page {% endcomment %}
-              {% assign path_item_index_url = path_item_url | append: "index" %}
-              {% assign path_item_page = site.concepts | find: "url", path_item_index_url %}
-              {% comment %} output sub-collection breadcrumb {% endcomment %}
-              <span>
-                <a href="{{ path_item_url | remove_first: "/" | relative_url }}">
-                  {{ path_item_page.title }}
-                </a>
-              </span>
-            {% endif %}
-          {% endif %}
+              {% assign breadcrumb_url = forloop_path | remove_first: "/" | relative_url %}
+              {% comment %} find the page/document corresponding to the path so far {% endcomment %}
+              {% assign forloop_path_index = forloop_path | append: "index" %}
+              {% assign forloop_path_page = site.pages | find_exp: "item", "item.url == forloop_path or item.url == forloop_path_index" %}
+              {% unless forloop_path_page %}
+                {% assign forloop_path_page = site.documents | find_exp: "item", "item.url == forloop_path or item.url == forloop_path_index" %}
+              {% endunless %}
+              {% assign breadcrumb_title = forloop_path_page.title %}
+          {% endcase %}
+        
+          <span>
+            {% unless forloop.last %}
+              <a href="{{ breadcrumb_url }}">
+                {{ breadcrumb_title }}
+              </a>
+            {% else %}
+              {{ breadcrumb_title }}
+            {% endunless %}
+          </span>
 
         {% endfor %}
-        
       {% endif %}
     </span> <!-- endof #breadcrumb -->
 
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
     <div id="topbar-title">
-      {% if page.layout == 'home' %}
+      {% if page.url == '/' %}
         {{- site.data.locales[lang].title | default: site.title -}}
       {% elsif page.collection == 'tabs' or page.layout == 'page' %}
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}

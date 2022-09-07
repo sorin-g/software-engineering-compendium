@@ -3,29 +3,38 @@
 # ----- Commons label -----
 
 layout:
+  blog: Blog
+  concept: Concept
+  concepts: Concepts
   post: Post
   category: Category
   tag: Tag
 
-# The site collections
+# The site collections. See `/content` directory
 collections:
   concepts: Concepts
   drafts: Drafts
   posts: Posts
   tabs: Tabs
 
-# The tabs of sidebar
+# The display name for the sidebar items
 tabs:
-  # format: <filename_without_extension>: <value>
+  # Default sidebar links
   home: Home
+  blog: Posts
+  # Actual tabs. Format - <filename_without_extension>: <value>
   concepts: Concepts
-  further-reading: Further Reading
+  further-reading: Further reading
   categories: Categories
   tags: Tags
   archives: Archives
   about: About
 
-# the text displayed in the search bar & search results
+# Theme labels
+theme:
+  button_title: Light/Dark mode   # Theme button tooltip
+
+# The text displayed in the search bar & search results
 search:
   hint: search
   cancel: Cancel
@@ -51,6 +60,7 @@ copyright:
 
 meta: Powered by :PLATFORM with :THEME theme.
 
+# 404 - Page not found
 not_found:
   statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
 
@@ -59,7 +69,6 @@ notification:
   update: Update
 
 # ----- Posts related labels -----
-
 post:
   written_by: By
   posted: Posted
