@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://sorin-g.github.io/software-engineering-compendium/software-engineering-compendium/concepts/sample-concept/index</loc>
+<lastmod>2022-09-15T00:10:18+01:00</lastmod>
+</url>
+<url>
+<loc>https://sorin-g.github.io/software-engineering-compendium/software-engineering-compendium/concepts/sample-concept/sample-page/</loc>
+<lastmod>2022-09-15T00:10:18+01:00</lastmod>
+</url>
+<url>
+<loc>https://sorin-g.github.io/software-engineering-compendium/software-engineering-compendium/blog/text-and-typography/</loc>
+<lastmod>2022-09-03T21:55:24+01:00</lastmod>
+</url>
+<url>
+<loc>https://sorin-g.github.io/software-engineering-compendium/software-engineering-compendium/concepts/</loc>
+<lastmod>2022-09-15T00:10:18+01:00</lastmod>
+</url>
+<url>
+<loc>https://sorin-g.github.io/software-engineering-compendium/software-engineering-compendium/further-reading/</loc>
+<lastmod>2022-09-15T00:10:18+01:00</lastmod>
+</url>
+<url>
+<loc>https://sorin-g.github.io/software-engineering-compendium/software-engineering-compendium/blog/</loc>
+</url>
+<url>
+<loc>https://sorin-g.github.io/software-engineering-compendium/software-engineering-compendium/</loc>
+</url>
+</urlset>

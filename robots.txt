@@ -1,0 +1,5 @@
+User-agent: *
+
+Disallow: /norobots/
+
+Sitemap: https://sorin-g.github.io/software-engineering-compendium/software-engineering-compendium/sitemap.xml
