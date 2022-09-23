@@ -51,7 +51,7 @@ GEM
       jekyll (>= 3.8, < 5.0)
     jekyll-sitemap (1.4.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-theme-chirpy (5.2.1)
+    jekyll-theme-chirpy (5.3.0)
       jekyll (~> 4.1)
       jekyll-archives (~> 2.2)
       jekyll-paginate (~> 1.1)
@@ -69,7 +69,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
-    nokogiri (1.13.8-x64-mingw-ucrt)
+    nokogiri (1.13.8-x64-unknown)
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
@@ -102,12 +102,12 @@ GEM
     yell (2.2.2)
 
 PLATFORMS
-  x64-mingw-ucrt
+  x64-unknown
   x86_64-linux
 
 DEPENDENCIES
   html-proofer (~> 3.18)
-  jekyll-theme-chirpy (~> 5.2, >= 5.2.1)
+  jekyll-theme-chirpy (~> 5.3)
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
